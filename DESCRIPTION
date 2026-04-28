@@ -23,9 +23,11 @@ Imports:
     SummarizedExperiment,
     DESeq2,
     apeglm,
-    roxygen2,
-    usethis,
-    Rapp
+    stats,
+    rlang,
+    utils,
+    readr
+    utils
 Suggests: 
     knitr,
     rmarkdown,
