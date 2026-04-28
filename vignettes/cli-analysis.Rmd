@@ -6,6 +6,10 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(eval = FALSE, message = FALSE, warning = FALSE)
+```
+
 Designed for RNA-seq workflows, **JW26ADS8192** provides a streamlined pipeline to differential expression results. Use supply raw count matrices and sample metadata (TSV/CSV) directly via the command-line interface.
 
 ---
