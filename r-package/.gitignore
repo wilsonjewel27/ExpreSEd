@@ -1,0 +1,36 @@
+# Nextflow runtime artifacts
+/nextflow/work/
+/nextflow/.nextflow*
+/nextflow/trace*.txt
+/nextflow/timeline*.html
+/nextflow/report*.html
+/nextflow/dag*.svg
+/nextflow/.nf-test/
+
+# R / RStudio
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+.httr-oauth
+# Quarto/pkgdown/docs artifacts
+.quarto/
+docs/
+inst/doc/
+# R package build/check artifacts
+*.tar.gz
+*.Rcheck/
+# renv (keep lockfile)
+renv/library/
+renv/staging/
+!renv.lock
+# Secrets / env
+.env
+.env.*
+*.key
+*.pem
+# OS/editor
+.DS_Store
+Thumbs.db
+# Project-specific generated directory
+nf-core-deseq2_analysis/
