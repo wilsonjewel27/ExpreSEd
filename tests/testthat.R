@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/articles/special-files.html
 
 library(testthat)
-library(JW26ADS8192)
+library(ExpreSEd)
 
-test_check("JW26ADS8192")
+test_check("ExpreSEd")

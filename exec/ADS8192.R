@@ -1,9 +1,9 @@
-#| name: JW26ADS8192
-#| title: JW26ADS8192 Differential Gene Expression with DESeq2
+#| name: ExpreSEd
+#| title: ExpreSEd Differential Gene Expression with DESeq2
 #| description: DESeq2 analysis for count matrix and sample metadata.
 
 suppressPackageStartupMessages({
-  library(JW26ADS8192)
+  library(ExpreSEd)
   library(utils)
   library(stats)
   library(ggplot2)
