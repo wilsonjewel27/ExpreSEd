@@ -1,15 +1,15 @@
 # Differential Expression Analysis via R Studio
 
-Designed for RNA-seq workflows, **JW26ADS8192** provides a streamlined
+Designed for RNA-seq workflows, **ExpreSEd** provides a streamlined
 pipeline to differential expression results. Use a SummarizedExperiment
 object through the R package interface
 
 ------------------------------------------------------------------------
 
-## Step 1: Install JW26ADS8192 from GitHub
+## Step 1: Install ExpreSEd from GitHub
 
 ``` r
-remotes::install_github("wilsonjewel27/JW26ADS8192")
+remotes::install_github("wilsonjewel27/ExpreSEd")
 ```
 
 ------------------------------------------------------------------------
@@ -18,7 +18,7 @@ remotes::install_github("wilsonjewel27/JW26ADS8192")
 
 ``` r
 #Required Libraries
-library(JW26ADS8192)
+library(ExpreSEd)
 library(ggplot2)
 library(SummarizedExperiment)
 library(DESeq2)

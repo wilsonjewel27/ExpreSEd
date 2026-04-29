@@ -1,4 +1,4 @@
 # License
 
     YEAR: 2026
-    COPYRIGHT HOLDER: JW26ADS8192 authors
+    COPYRIGHT HOLDER: ExpreSEd authors

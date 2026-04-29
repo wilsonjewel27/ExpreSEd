@@ -1,8 +1,8 @@
-# Getting Started with JW26ADS8192
+# Getting Started with ExpreSEd
 
 ## Introduction
 
-Designed for RNA-seq workflows, **JW26ADS8192** provides a streamlined
+Designed for RNA-seq workflows, **ExpreSEd** provides a streamlined
 pipeline to differential expression results. Use a SummarizedExperiment
 object through the R package interface, or supply raw count matrices and
 sample metadata (TSV/CSV) directly via the command-line interface.
@@ -11,17 +11,17 @@ sample metadata (TSV/CSV) directly via the command-line interface.
 
 ## Analysis via Command-Line Interface (Rapp): Quick Example
 
-### Step 1: Install JW26ADS8192 from GitHub
+### Step 1: Install ExpreSEd from GitHub
 
 ``` bash
-Rscript -e "Rapp::install_pkg_cli_apps('JW26ADS8192')"
+Rscript -e "Rapp::install_pkg_cli_apps('ExpreSEd')"
 ```
 
 ### Step 2: Load example dataset and set paths
 
 ``` r
-ex_counts_path <- system.file("testdata", "example_counts.tsv", package = "JW26ADS8192")
-ex_meta_path   <- system.file("testdata", "example_meta.tsv", package = "JW26ADS8192")
+ex_counts_path <- system.file("testdata", "example_counts.tsv", package = "ExpreSEd")
+ex_meta_path   <- system.file("testdata", "example_meta.tsv", package = "ExpreSEd")
 
 Sys.setenv(EX_COUNTS = ex_counts_path)
 Sys.setenv(EX_META   = ex_meta_path)
@@ -35,7 +35,7 @@ Evaluate model performance across different threshold values and select
 the best one.
 
 ``` bash
-JW26ADS8192 determine_filter_threshold --count $EX_COUNTS --meta $EX_META --output ./results/
+ExpreSEd determine_filter_threshold --count $EX_COUNTS --meta $EX_META --output ./results/
 ```
 
 Results output a **filtering_analysis.tsv** table in results folder.
@@ -48,7 +48,7 @@ Using the threshold value determined in Step 1, manually replace the
 10.
 
 ``` bash
-JW26ADS8192 filter_low_exp_genes --count $EX_COUNTS --meta $EX_META --output ./results/
+ExpreSEd filter_low_exp_genes --count $EX_COUNTS --meta $EX_META --output ./results/
 ```
 
 Success confirmation will read: “Saved as RDS. Done.” Output
@@ -62,7 +62,7 @@ Default `group_var` = “cell-type”. Replace `ref_level` with a specific
 cell type to be reference. Default `re_level` = “Tconv”
 
 ``` bash
-JW26ADS8192 run_DESeq2 --input ./results/se_filtered.rds --output ./results/
+ExpreSEd run_DESeq2 --input ./results/se_filtered.rds --output ./results/
 ```
 
 Success confirmation will read: “Saved as RDS. Done.” Output
@@ -74,7 +74,7 @@ Replace `shrinkage` with the appropriate GLM estimator. Default
 `shrinkage` = “apeglm”
 
 ``` bash
-JW26ADS8192 log2_shrinkage  --input ./results/se_dge.rds --output ./results/
+ExpreSEd log2_shrinkage  --input ./results/se_dge.rds --output ./results/
 ```
 
 Success confirmation will read: “Saved as RDS. Done.” Results output
@@ -88,7 +88,7 @@ threshold. Default `p_threshold` = 0.05. Replace `fc_threshold` with the
 appropriate fold-change threshold. Default `fc_threshold` = 0.5.
 
 ``` bash
-JW26ADS8192 gene_regulation_summary  --input ./results/dge_shrink.rds --output ./results/
+ExpreSEd gene_regulation_summary  --input ./results/dge_shrink.rds --output ./results/
 ```
 
 Success confirmation will read: “Saved as RDS. Done.” Results output
@@ -105,7 +105,7 @@ correct x-axis title. Default `xlab` = “log2 Fold Change (Treg vs
 Tconv)”.
 
 ``` bash
-JW26ADS8192 generate_volcano --input ./results/dge_shrink.rds --output ./results/
+ExpreSEd generate_volcano --input ./results/dge_shrink.rds --output ./results/
 ```
 
 Success confirmation will read: “Saved as RDS. Done.” Results output
@@ -116,17 +116,17 @@ saved in “./results/”
 
 ## Analysis via R Studio: Quick Example
 
-### Step 1: Install JW26ADS8192 from GitHub
+### Step 1: Install ExpreSEd from GitHub
 
 ``` r
-remotes::install_github("wilsonjewel27/JW26ADS8192")
+remotes::install_github("wilsonjewel27/ExpreSEd")
 ```
 
 ### Step 2: Load the following libraries & example dataset
 
 ``` r
 #Required Libraries
-library(JW26ADS8192)
+library(ExpreSEd)
 library(ggplot2)
 library(SummarizedExperiment)
 library(DESeq2)
@@ -259,9 +259,9 @@ example_se_exports<- export_outputs(
 
 ## Notes
 
-JW26ADS8192 **R-package** includes an additional function (7 total
+ExpreSEd **R-package** includes an additional function (7 total
 functions) which collectively generates and exports
 filtering_analysis.tsv, dge_shrink.tsv, volcano_plot.pdf, and
-volcano_plot.png to current working directory. JW26ADS8192 **CLI** only
+volcano_plot.png to current working directory. ExpreSEd **CLI** only
 includes 6 functions, which generate and export deliverable within a
 single step.

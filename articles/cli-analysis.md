@@ -1,23 +1,23 @@
 # Differential Expression Analysis via Command Line Interface
 
-Designed for RNA-seq workflows, **JW26ADS8192** provides a streamlined
+Designed for RNA-seq workflows, **ExpreSEd** provides a streamlined
 pipeline to differential expression results. Use supply raw count
 matrices and sample metadata (TSV/CSV) directly via the command-line
 interface.
 
 ------------------------------------------------------------------------
 
-## Step 1: Install JW26ADS8192 from GitHub
+## Step 1: Install ExpreSEd from GitHub
 
 ``` bash
-Rscript -e "Rapp::install_pkg_cli_apps('JW26ADS8192')"
+Rscript -e "Rapp::install_pkg_cli_apps('ExpreSEd')"
 ```
 
 ## Step 2: Load example dataset and set paths
 
 ``` r
-ex_counts_path <- system.file("testdata", "example_counts.tsv", package = "JW26ADS8192")
-ex_meta_path   <- system.file("testdata", "example_meta.tsv", package = "JW26ADS8192")
+ex_counts_path <- system.file("testdata", "example_counts.tsv", package = "ExpreSEd")
+ex_meta_path   <- system.file("testdata", "example_meta.tsv", package = "ExpreSEd")
 
 Sys.setenv(EX_COUNTS = ex_counts_path)
 Sys.setenv(EX_META   = ex_meta_path)
@@ -31,7 +31,7 @@ Evaluate model performance across different threshold values and select
 the best one.
 
 ``` r
-JW26ADS8192 determine_filter_threshold --count $EX_COUNTS --meta $EX_META --output ./results/
+ExpreSEd determine_filter_threshold --count $EX_COUNTS --meta $EX_META --output ./results/
 ```
 
 Results output a **filtering_analysis.tsv** table in results folder.
@@ -44,7 +44,7 @@ Using the threshold value determined in Step 1, manually replace the
 10.
 
 ``` r
-JW26ADS8192 filter_low_exp_genes --count $EX_COUNTS --meta $EX_META --output ./results/
+ExpreSEd filter_low_exp_genes --count $EX_COUNTS --meta $EX_META --output ./results/
 ```
 
 Success confirmation will read: “Saved as RDS. Done.” Output
@@ -58,7 +58,7 @@ Default `group_var` = “cell-type”. Replace `ref_level` with a specific
 cell type to be reference. Default `re_level` = “Tconv”
 
 ``` r
-JW26ADS8192 run_DESeq2 --input ./results/se_filtered.rds --output ./results/
+ExpreSEd run_DESeq2 --input ./results/se_filtered.rds --output ./results/
 ```
 
 Success confirmation will read: “Saved as RDS. Done.” Output
@@ -70,7 +70,7 @@ Replace `shrinkage` with the appropriate GLM estimator. Default
 `shrinkage` = “apeglm”
 
 ``` r
-JW26ADS8192 log2_shrinkage  --input ./results/se_dge.rds --output ./results/
+ExpreSEd log2_shrinkage  --input ./results/se_dge.rds --output ./results/
 ```
 
 Success confirmation will read: “Saved as RDS. Done.” Results output
@@ -84,7 +84,7 @@ threshold. Default `p_threshold` = 0.05. Replace `fc_threshold` with the
 appropriate fold-change threshold. Default `fc_threshold` = 0.5.
 
 ``` r
-JW26ADS8192 gene_regulation_summary  --input ./results/dge_shrink.rds --output ./results/
+ExpreSEd gene_regulation_summary  --input ./results/dge_shrink.rds --output ./results/
 ```
 
 Success confirmation will read: “Saved as RDS. Done.” Results output
@@ -101,7 +101,7 @@ correct x-axis title. Default `xlab` = “log2 Fold Change (Treg vs
 Tconv)”.
 
 ``` r
-JW26ADS8192 generate_volcano --input ./results/dge_shrink.rds --output ./results/
+ExpreSEd generate_volcano --input ./results/dge_shrink.rds --output ./results/
 ```
 
 Success confirmation will read: “Saved as RDS. Done.” Results output
