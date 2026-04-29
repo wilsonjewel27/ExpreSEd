@@ -59,7 +59,7 @@ articles:
   navbar: ~
   contents:
   - 'r-analysis'
-  - 'cli_analysis'
+  - 'cli-analysis'
 #  - run-DESeq2-analysis
 #  - shrink-dge-results
 #  - summarize-gene-regulation
