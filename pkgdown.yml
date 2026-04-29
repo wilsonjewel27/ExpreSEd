@@ -2,8 +2,10 @@ pandoc: 3.1.11
 pkgdown: 2.2.0
 pkgdown_sha: ~
 articles:
+  cli-analysis: cli-analysis.html
   getting-started: getting-started.html
-last_built: 2026-04-28T17:12Z
+  r-analysis: r-analysis.html
+last_built: 2026-04-29T15:27Z
 urls:
-  reference: https://wilsonjewel27.github.io/JW26ADS8192/reference
-  article: https://wilsonjewel27.github.io/JW26ADS8192/articles
+  reference: https://github.com/wilsonjewel27/JW26ADS8192/reference
+  article: https://github.com/wilsonjewel27/JW26ADS8192/articles
