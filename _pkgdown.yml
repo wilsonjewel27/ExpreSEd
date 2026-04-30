@@ -9,17 +9,21 @@ navbar:
     - intro
     - reference
     - articles
+    - about
     right:
     - search
     - github
   components:
     articles:
-      text: Methods
+      text: In-Depth Tutorial
       menu:
       - text: 'Differential Expression Analysis via R Studio'
         href: articles/r-analysis.html
       - text: 'Differential Expression Analysis via Command Line Interface'
         href: articles/cli-analysis.html
+    about:
+      text: About ExpreSEd
+      href: articles/about.html
 
 reference:
 - title: Example Data
@@ -64,8 +68,3 @@ articles:
   contents:
   - 'r-analysis'
   - 'cli-analysis'
-#  - run-DESeq2-analysis
-#  - shrink-dge-results
-#  - summarize-gene-regulation
-#  - volcano-plot
-#  - export-results

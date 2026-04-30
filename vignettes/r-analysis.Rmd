@@ -9,6 +9,7 @@ vignette: >
 Designed for RNA-seq workflows, **ExpreSEd** provides a streamlined pipeline to differential expression results. Use a SummarizedExperiment object through the R package interface
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE, message = FALSE, warning = FALSE)
+load("prebuilt_data.RData")
 ```
 
 ---
