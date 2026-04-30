@@ -9,9 +9,13 @@ vignette: >
 Designed for RNA-seq workflows, **ExpreSEd** provides a streamlined pipeline to differential expression results. Use a SummarizedExperiment object through the R package interface
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(eval = FALSE, message = FALSE, warning = FALSE)
+```
+```{r load_data, include=FALSE, eval=TRUE}
 load("prebuilt_data.RData")
 ```
-
+```{r test, eval=TRUE, include=TRUE}
+ls()
+```
 ---
 
 ## Step 1: Install ExpreSEd from GitHub
@@ -56,7 +60,7 @@ example_se_filtering_assessment <- determine_filter_threshold(
   
 example_se_filtering_assessment
 ```
-```{r determine_filter_threshold, echo=FALSE}
+```{r determine_filter_threshold, echo=FALSE, eval=TRUE}
 example_se_filtering_assessment
 ```
 
@@ -92,7 +96,7 @@ se_dge_shrink <- log2_shrinkage(
 
 se_dge_shrink
 ```
-```{r log2_shrinkage, echo=FALSE}
+```{r log2_shrinkage, echo=FALSE, eval=TRUE}
 head(se_dge_shrink)
 ```
 
@@ -107,7 +111,7 @@ DESeq2_gene_reg_summary <- gene_regulation_summary(
 
 DESeq2_gene_reg_summary
 ```
-```{r gene_regulation_summary, echo=FALSE}
+```{r gene_regulation_summary, echo=FALSE, eval=TRUE}
 DESeq2_gene_reg_summary
 ```
 
@@ -124,7 +128,7 @@ example_se_volcano <- generate_volcano(
 
 example_se_volcano
 ```
-```{r generate_volcano, echo=FALSE}
+```{r generate_volcano, echo=FALSE, eval=TRUE}
 example_se_volcano 
 ```
 
