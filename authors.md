@@ -10,12 +10,11 @@
 Source:
 [`DESCRIPTION`](https://github.com/wilsonjewel27/ExpreSEd/blob/master/DESCRIPTION)
 
-Jewel W (2026). *ExpreSEd: ADS 8192 Differential Expression with
-DESeq2*. R package version 0.0.0.9000,
+Jewel W (2026). *ExpreSEd: ExpreSEd*. R package version 0.0.0.9000,
 <https://github.com/wilsonjewel27/ExpreSEd>.
 
     @Manual{,
-      title = {ExpreSEd: ADS 8192 Differential Expression with DESeq2},
+      title = {ExpreSEd: ExpreSEd},
       author = {Wilson Jewel},
       year = {2026},
       note = {R package version 0.0.0.9000},
