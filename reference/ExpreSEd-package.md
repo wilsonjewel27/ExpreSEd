@@ -1,4 +1,4 @@
-# ExpreSEd: ADS 8192 Differential Expression with DESeq2
+# ExpreSEd: ExpreSEd
 
 Provides a tool for differential gene analysis of lymph node regulatory
 T cells (Tregs) and conventional T cells (Tconv) isolated from four
@@ -15,6 +15,8 @@ plot, and (7) exportsthe results to TSV files.
 Useful links:
 
 - <https://github.com/wilsonjewel27/ExpreSEd>
+
+- <https://wilsonjewel27.github.io/ExpreSEd/>
 
 - Report bugs at <https://github.com/wilsonjewel27/ExpreSEd/issues>
 

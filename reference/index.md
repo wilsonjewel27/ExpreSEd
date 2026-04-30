@@ -12,9 +12,8 @@ Load an example simulated SummarizedExperiment object
 Use to determine which gene should not be included in analysis.
 
 - [`determine_filter_threshold()`](https://github.com/wilsonjewel27/ExpreSEd/reference/determine_filter_threshold.md)
-  : The filtering diagnostics evaluate how the pre-filtering threshold
-  (minimum count per group) affects the number of discoveries, enabling
-  users to choose an informed threshold
+  : Evaluates how pre-filtering thresholds affect the number of
+  discoveries, helping users select an informed minimum count.
 
 ## Filter Low Expression Genes
 
@@ -45,7 +44,7 @@ Tabularly visualize the number for up and down regulated and
 insignificant genes
 
 - [`gene_regulation_summary()`](https://github.com/wilsonjewel27/ExpreSEd/reference/gene_regulation_summary.md)
-  : Summarize the number of significantly non-significant(ns)/up/down
+  : Summarize the number of significant, upregulated, and downregulated
   genes at given thresholds
 
 ## Visualize Expression

@@ -31,8 +31,10 @@ A SummarizedExperiment subset of genes with greater than n counts
 ``` r
 data(example_se)
 
-# Step 1; Filter low expression genes
-se_filtered <- filter_low_exp_genes(se_ln = example_se, min_count_per_group = 10, assay_name = "counts")
+# Step 1: Filter low expression genes
+se_filtered <- filter_low_exp_genes(se_ln = example_se, 
+                                    min_count_per_group = 10, 
+                                    assay_name = "counts")
 #> Genes after filtering: 500 
 #> colData names: cell_id cell_type batch
 ```

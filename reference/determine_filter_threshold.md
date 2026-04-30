@@ -1,8 +1,7 @@
-# The filtering diagnostics evaluate how the pre-filtering threshold (minimum count per group) affects the number of discoveries, enabling users to choose an informed threshold
+# Evaluates how pre-filtering thresholds affect the number of discoveries, helping users select an informed minimum count.
 
-The filtering diagnostics evaluate how the pre-filtering threshold
-(minimum count per group) affects the number of discoveries, enabling
-users to choose an informed threshold
+Evaluates how pre-filtering thresholds affect the number of discoveries,
+helping users select an informed minimum count.
 
 ## Usage
 
@@ -25,8 +24,8 @@ determine_filter_threshold(
 
 - count_thresholds:
 
-  minimum threshold of gene counts (default: 'c(0, 1, 5, 10, 20, 50,
-  100, 200, 500)')
+  Numeric vector of thresholds to evaluate (default: c(0, 1, 5, 10, 20,
+  50, 100, 200, 500))
 
 - assay_name:
 
@@ -54,7 +53,14 @@ A dataframe summarizing the number of significant genes per threshold
 data(example_se)
 
 # Step 1: Evaluate how model preforms using different threshold values
-example_se_filtering_assessment<- determine_filter_threshold(se_ln = example_se,count_thresholds = c(0, 1, 5, 10, 20, 50, 100, 200, 500), assay_name = "counts", ref_level = "Tconv", group_var = "cell_type", p_threshold = 0.05)
+example_se_filtering_assessment <- determine_filter_threshold(
+  se_ln = example_se,
+  count_thresholds = c(0, 1, 5, 10, 20, 50, 100, 200, 500),
+  assay_name = "counts",
+  ref_level = "Tconv",
+  group_var = "cell_type",
+  p_threshold = 0.05
+)
 #> converting counts to integer mode
 #> -- note: fitType='parametric', but the dispersion trend was not well captured by the
 #>    function: y = a/x + b, and a local regression fit was automatically substituted.
@@ -92,5 +98,6 @@ example_se_filtering_assessment<- determine_filter_threshold(se_ln = example_se,
 #>    function: y = a/x + b, and a local regression fit was automatically substituted.
 #>    specify fitType='local' or 'mean' to avoid this message next time.
 
-# Step 2: Choose the optimal min gene count threshold per gene and insert into all functions. `min_count_per_group` (default: 10)
+# Step 2: Choose the optimal min count threshold.
+  # Insert into min_count_per_group (default: 10)
 ```
