@@ -7,4 +7,4 @@
 docs
 inst/doc
 nf-core-deseq2_analysis/
-/nextflow/work/
+nextflow/work/
