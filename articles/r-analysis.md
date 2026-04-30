@@ -4,6 +4,15 @@ Designed for RNA-seq workflows, **ExpreSEd** provides a streamlined
 pipeline to differential expression results. Use a SummarizedExperiment
 object through the R package interface
 
+``` r
+
+ls()
+```
+
+    ## [1] "DESeq2_gene_reg_summary"         "example_se_filtering_assessment"
+    ## [3] "example_se_volcano"              "se_dge"                         
+    ## [5] "se_dge_shrink"                   "se_filtered"
+
 ------------------------------------------------------------------------
 
 ## Step 1: Install ExpreSEd from GitHub
@@ -61,6 +70,17 @@ example_se_filtering_assessment <- determine_filter_threshold(
 example_se_filtering_assessment
 ```
 
+    ##   threshold n_tested n_significant
+    ## 1         0       50            47
+    ## 2         1       50            47
+    ## 3         5       50            47
+    ## 4        10       50            47
+    ## 5        20       50            47
+    ## 6        50       50            47
+    ## 7       100       50            47
+    ## 8       200       50            47
+    ## 9       500       50            47
+
 ### Step 3.2: Filter Low Expression Genes
 
 Using the threshold value determined in Step 1, manually replace the
@@ -108,6 +128,14 @@ se_dge_shrink <- log2_shrinkage(
 se_dge_shrink
 ```
 
+    ##       baseMean log2FoldChange     lfcSE       pvalue         padj  gene
+    ## gene1 148.4587      0.4495101 0.1439740 0.0006820103 0.0012629820 gene1
+    ## gene2 137.6677      0.5369061 0.1829566 0.0009169960 0.0016374929 gene2
+    ## gene3 142.6000      0.2120192 0.1586138 0.1333416729 0.1388975760 gene3
+    ## gene4 151.4552      0.5651548 0.1392639 0.0000136085 0.0000930082 gene4
+    ## gene5 145.1170      0.3479454 0.1601443 0.0150181025 0.0170660255 gene5
+    ## gene6 153.9560      0.2772997 0.1299213 0.0211811995 0.0230230429 gene6
+
 ### Step 3.5: Intrepret the Gene Regulation
 
 Summarize the non-significant and up and down regulated genes in the
@@ -125,6 +153,11 @@ DESeq2_gene_reg_summary <- gene_regulation_summary(
 
 DESeq2_gene_reg_summary
 ```
+
+    ##   direction count
+    ## 1      down    11
+    ## 2        ns    31
+    ## 3        up     8
 
 ### Step 3.6: Visualize Expression
 
@@ -147,6 +180,8 @@ example_se_volcano <- generate_volcano(
 
 example_se_volcano
 ```
+
+![](r-analysis_files/figure-html/generate_volcano-1.png)
 
 ### Step 3.7: Export Results
 
