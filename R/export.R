@@ -12,12 +12,13 @@
 #'
 #' @importFrom ggplot2 ggsave
 #' @importFrom SummarizedExperiment assay colData
+#' @importFrom stats write.table
 #' @export
 #'
 #' @examples
 #'  data(example_se)
 #'
-#' # Step 1: Evaluate how model preforms using different threshold values and choose a threshold
+#' # Step 1: Evaluate how model preforms using different threshold values
 #' example_se_filtering_assessment<- determine_filter_threshold(example_se)
 #'
 #' # Step 2; Filter low expression genes
@@ -26,17 +27,23 @@
 #' # Step 3: Run the DESeq2 pipeline to get differential gene expression results
 #'  se_dge<- run_DESeq2(se_filtered)
 #'
-#' # Step 4: Run the log2_shrinkage function on the results of the DESeq2 function to create more reliable estimates
+#' # Step 4: Run log2_shrinkage on DESeq2 results for reliable estimates
 #' se_dge_shrink <- log2_shrinkage(se_dge)
 #'
-#' # Step 5: Create a volcano plot of the gene expression using the results obtained from the log2_shrinkage function
+#' # Step 5: Create a volcano plot using log2_shrinkage results
 #' example_se_volcano<- generate_volcano(se_dge_shrink)
 #'
 #' # Step 6: Generate the regulation summary of the genes
 #' DESeq2_gene_reg_summary<- gene_regulation_summary(se_dge_shrink)
 #'
 #' # Step 7: Export final results
-#' example_se_exports<- export_outputs(res_df = se_dge_shrink, summary_df = DESeq2_gene_reg_summary, filtering_diag = example_se_filtering_assessment, volcano = example_se_volcano, output_dir = file.path(tempdir(), "de_output") )
+#' example_se_exports <- export_outputs(
+#'   res_df = se_dge_shrink,
+#'   summary_df = DESeq2_gene_reg_summary,
+#'   filtering_diag = example_se_filtering_assessment,
+#'   volcano = example_se_volcano,
+#'   output_dir = file.path(tempdir(), "de_output")
+#' )
 #'
 export_outputs<- function(res_df, summary_df, filtering_diag, volcano,
                           output_dir = file.path(tempdir(), "de_output")){
@@ -68,7 +75,9 @@ export_outputs<- function(res_df, summary_df, filtering_diag, volcano,
 #Saves the volcano plot as a pdf
     ggsave(filename="volcano_plot.pdf", plot=volcano, width=5, height = 5, path = output_dir)
 #Saves the volcano plot as a png
-    ggsave(filename="volcano_plot.png",plot=volcano, width=5, height = 5, units = "in", dpi = 300, path = output_dir)
+    ggsave(filename = "volcano_plot.png", plot = volcano, 
+    width = 5, height = 5, units = "in", 
+    dpi = 300, path = output_dir)
     files <- list.files(output_dir, full.names = TRUE)
     message(sprintf( "Export complete. Files saved:\n%s",
                     paste(files, collapse = "\n")

@@ -1,9 +1,11 @@
 # R/data.R
 
-#'  The filtering diagnostics evaluate how the pre-filtering threshold (minimum count per group) affects the number of discoveries, enabling users to choose an informed threshold
+#' Evaluates how pre-filtering thresholds affect the number of 
+#' discoveries, helping users select an informed minimum count.
 #'
 #' @param se_ln A SummarizedExperiment object
-#' @param count_thresholds minimum threshold of gene counts (default: 'c(0, 1, 5, 10, 20, 50, 100, 200, 500)')
+#' @param count_thresholds Numeric vector of thresholds to evaluate
+#'   (default: c(0, 1, 5, 10, 20, 50, 100, 200, 500))
 #' @param assay_name Name of assay to use (default: "counts")
 #' @param ref_level Sets the reference for comparison (default: "Tconv")
 #' @param p_threshold Significance threshold for adjusted p-value(default: 0.05)
@@ -13,19 +15,29 @@
 #'
 #' @importFrom  SummarizedExperiment assay colData
 #' @importFrom  DESeq2 DESeqDataSet DESeq results
+#' @importFrom  stats relevel na.rm as.formula
 #' @export
 #'
 #' @examples
 #' data(example_se)
 #'
 #' # Step 1: Evaluate how model preforms using different threshold values
-#' example_se_filtering_assessment<- determine_filter_threshold(se_ln = example_se,count_thresholds = c(0, 1, 5, 10, 20, 50, 100, 200, 500), assay_name = "counts", ref_level = "Tconv", group_var = "cell_type", p_threshold = 0.05)
+#' example_se_filtering_assessment <- determine_filter_threshold(
+#'   se_ln = example_se,
+#'   count_thresholds = c(0, 1, 5, 10, 20, 50, 100, 200, 500),
+#'   assay_name = "counts",
+#'   ref_level = "Tconv",
+#'   group_var = "cell_type",
+#'   p_threshold = 0.05
+#' )
 #'
-#' # Step 2: Choose the optimal min gene count threshold per gene and insert into all functions. `min_count_per_group` (default: 10)
+#' # Step 2: Choose the optimal min count threshold.
+#'   # Insert into min_count_per_group (default: 10)
 #'
-determine_filter_threshold<- function(se_ln, count_thresholds = c(0, 1, 5, 10, 20, 50, 100, 200, 500),
-                                      assay_name = "counts", ref_level = "Tconv",
-                                      group_var = "cell_type", p_threshold = 0.05){
+determine_filter_threshold <- function(se_ln, 
+                                       count_thresholds = c(0, 1, 5, 10, 20, 50, 100, 200, 500),
+                                       assay_name = "counts", ref_level = "Tconv",
+                                       group_var = "cell_type", p_threshold = 0.05){
   #if `group_var` isn't in se, throw error
   if (!group_var %in% colnames(colData(se_ln))){
     stop(sprintf(
@@ -44,7 +56,11 @@ determine_filter_threshold<- function(se_ln, count_thresholds = c(0, 1, 5, 10, 2
       }
     #else, proceed
     else{
-    filtering_diag <- data.frame(threshold = count_thresholds, n_tested = NA_integer_, n_significant = NA_integer_)
+    filtering_diag <- data.frame(
+      threshold = count_thresholds,
+      n_tested = NA_integer_,
+      n_significant = NA_integer_
+)
   se_ln[[group_var]] <- as.factor(se_ln[[group_var]])
   for (j in seq_along(count_thresholds)) {
     thresh <- count_thresholds[j]
