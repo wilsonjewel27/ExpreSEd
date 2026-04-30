@@ -1,66 +1,35 @@
----
-output: github_document
----
 
+<!-- badges: start -->
+[![R-CMD-check](https://github.com/wilsonjewel27/ExpreSEd/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/wilsonjewel27/ExpreSEd/actions/workflows/R-CMD-check.yaml)
+<!-- badges: end -->
 
-```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>",
-  fig.path = "man/figures/README-",
-  out.width = "100%"
-)
-```
+<!-- badges: start -->
+[![pkgdown](https://github.com/wilsonjewel27/ExpreSEd/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/wilsonjewel27/ExpreSEd/actions/workflows/pkgdown.yaml)
+<!-- badges: end -->
 
-  <!-- badges: start -->
-  [![R-CMD-check](https://github.com/wilsonjewel27/JW26ADS8192/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/wilsonjewel27/JW26ADS8192/actions/workflows/R-CMD-check.yaml)
-  <!-- badges: end -->
-  
-  <!-- badges: start -->
-  [![pkgdown](https://github.com/wilsonjewel27/JW26ADS8192/actions/workflows/pkgdown.yaml/badge.svg)](https://github.com/wilsonjewel27/JW26ADS8192/actions/workflows/pkgdown.yaml)
-  <!-- badges: end -->
-  
-# JW26ADS8192
+# ExpreSEd
 
+Designed for RNA-seq workflows, **ExpreSEd** provides a streamlined
+pipeline to differential expression results. Use a SummarizedExperiment
+object through the R package interface, or supply raw count matrices and
+sample metadata (TSV/CSV) directly via the command-line interface.
 
-Designed for RNA-seq workflows, **JW26ADS8192** provides a streamlined pipeline to differential expression results. Use a SummarizedExperiment object through the R package interface, or supply raw count matrices and sample metadata (TSV/CSV) directly via the command-line interface.
-
---- 
-## Reproducibility / How to Run
-
-This project has:
-- **Conda env file** at `r-package/environment.yml`
-- **Dockerfile** at `r-package/Dockerfile`
-- **Nextflow pipeline** at `nextflow/main.nf`
-
-From repo root (`JW26ADS8192.v0.0.2`):
-```bash
-# Step 1. Create Conda environment
-conda env create -f environment.yml
-conda activate ads8192
-
-# Step 2. Build and Run a Docker Image
-docker build -t hw2-jewel:0.0.3 ./r-package
-docker run --rm -it -v "$PWD":/ads8192 -w /ads8192 hw2-jewel:0.0.3
-
-# Step 3. Run Nextflow workflow
-nextflow run nextflow/main.nf -c nextflow/nextflow.config -profile docker --outdir nextflow/results
-
-```
----
+------------------------------------------------------------------------
 
 ## R Studio Analysis
 
 ### Installation
-``` r 
+
+``` r
 # Install the package from GitHub
-remotes::install_github("JW26ADS8192")
+remotes::install_github("ExpreSEd")
 ```
+
 ### Quick Start
 
-```r
+``` r
 # Load package and example data (SummarizedExperiment)
-library(JW26ADS8192)
+library(ExpreSEd)
 data(example_se)
 
 # Pick the optimal 'minimun gene count' filtering threshold.
@@ -110,44 +79,54 @@ example_se_exports<- export_outputs(
   volcano        = example_se_volcano, 
   output_dir     = file.path("(tempdir()", "de_output") )
 ```
----
+
+------------------------------------------------------------------------
 
 ## Command-Line Interface (via Rapp)
 
 ### Installation
+
 ``` bash
 # Install the package from GitHub
-Rscript -e "Rapp::install_pkg_cli_apps('JW26ADS8192')"
+Rscript -e "Rapp::install_pkg_cli_apps('ExpreSEd')"
 ```
+
 ### Quick Start
 
-```bash
+``` bash
 # Load package and example data (TSV)
-ex_counts_path <- system.file("testdata", "example_counts.tsv", package = "JW26ADS8192")
-ex_meta_path   <- system.file("testdata", "example_meta.tsv", package = "JW26ADS8192")
+ex_counts_path <- system.file("testdata", "example_counts.tsv", package = "ExpreSEd")
+ex_meta_path   <- system.file("testdata", "example_meta.tsv", package = "ExpreSEd")
 
 Sys.setenv(EX_COUNTS = ex_counts_path)
 Sys.setenv(EX_META   = ex_meta_path)
 
 # Pick the optimal 'minimun gene count' filtering threshold.
-JW26ADS8192 determine_filter_threshold --count $EX_COUNTS --meta $EX_META --output ./results/
+ExpreSEd determine_filter_threshold --count $EX_COUNTS --meta $EX_META --output ./results/
 
 # Filter out the low expression genes
-JW26ADS8192 filter_low_exp_genes --count $EX_COUNTS --meta $EX_META --output ./results/
+ExpreSEd filter_low_exp_genes --count $EX_COUNTS --meta $EX_META --output ./results/
 
 # Run the DESeq2 pipeline
-JW26ADS8192 run_DESeq2 --input ./results/se_filtered.rds --output ./results/
+ExpreSEd run_DESeq2 --input ./results/se_filtered.rds --output ./results/
 
 # Shrink log2 fold-change estimates
-JW26ADS8192 log2_shrinkage  --input ./results/se_dge.rds --output ./results/
+ExpreSEd log2_shrinkage  --input ./results/se_dge.rds --output ./results/
 
 # Summarize Gene Expression
-JW26ADS8192 gene_regulation_summary  --input ./results/dge_shrink.rds --output ./results/
+ExpreSEd gene_regulation_summary  --input ./results/dge_shrink.rds --output ./results/
 
 # Visualize
-JW26ADS8192 generate_volcano --input ./results/dge_shrink.rds --output ./results/
-
+ExpreSEd generate_volcano --input ./results/dge_shrink.rds --output ./results/
 ```
----
+
+------------------------------------------------------------------------
+
 ## Notes
-JW26ADS8192 **R-package** includes an additional function (7 total functions) which collectively generates and exports filtering_analysis.tsv, dge_shrink.tsv, volcano_plot.pdf, and volcano_plot.png to current working directory. JW26ADS8192 **CLI** only includes 6 functions, which generate and export deliverable within a single step
+
+ExpreSEd **R-package** includes an additional function (7 total
+functions) which collectively generates and exports
+filtering_analysis.tsv, dge_shrink.tsv, volcano_plot.pdf, and
+volcano_plot.png to current working directory. ExpreSEd **CLI** only
+includes 6 functions, which generate and export deliverable within a
+single step.
