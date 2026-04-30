@@ -12,6 +12,8 @@ line, Docker, and Nextflow programs.
 
 ## Workflow
 
+![](workflow.png)
+
 ## Package Components
 
 ``` r
@@ -37,13 +39,6 @@ line, Docker, and Nextflow programs.
 │   └── example_se.rda
 ├── data-raw
 │   └── example_se.R
-├── inst
-│   └── example_outputs
-│       ├── de_results.tsv
-│       ├── de_summary.tsv
-│       ├── filtering_diagnostics.tsv
-│       ├── volcano_plot.pdf
-│       └── volcano_plot.png
 ├── exec
 │   └── ADS8192.R
 ├── man

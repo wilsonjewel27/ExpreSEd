@@ -80,6 +80,7 @@ line, Docker, and Nextflow programs.</p>
 <div class="section level2">
 <h2 id="workflow">Workflow<a class="anchor" aria-label="anchor" href="#workflow"></a>
 </h2>
+<p><img src="workflow.png" width="80%"></p>
 </div>
 <div class="section level2">
 <h2 id="package-components">Package Components<a class="anchor" aria-label="anchor" href="#package-components"></a>
@@ -106,44 +107,37 @@ line, Docker, and Nextflow programs.</p>
 <span id="cb1-20"><a href="#cb1-20" tabindex="-1"></a>│   └── example_se.rda</span>
 <span id="cb1-21"><a href="#cb1-21" tabindex="-1"></a>├── data<span class="sc">-</span>raw</span>
 <span id="cb1-22"><a href="#cb1-22" tabindex="-1"></a>│   └── example_se.R</span>
-<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a>├── inst</span>
-<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a>│   └── example_outputs</span>
-<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a>│       ├── de_results.tsv</span>
-<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a>│       ├── de_summary.tsv</span>
-<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a>│       ├── filtering_diagnostics.tsv</span>
-<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a>│       ├── volcano_plot.pdf</span>
-<span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a>│       └── volcano_plot.png</span>
-<span id="cb1-30"><a href="#cb1-30" tabindex="-1"></a>├── exec</span>
-<span id="cb1-31"><a href="#cb1-31" tabindex="-1"></a>│   └── ADS8192.R</span>
-<span id="cb1-32"><a href="#cb1-32" tabindex="-1"></a>├── man</span>
-<span id="cb1-33"><a href="#cb1-33" tabindex="-1"></a>│   ├── ExpreSEd<span class="sc">-</span>package.Rd</span>
-<span id="cb1-34"><a href="#cb1-34" tabindex="-1"></a>│   ├── determine_filter_threshold.Rd</span>
-<span id="cb1-35"><a href="#cb1-35" tabindex="-1"></a>│   ├── example_se.Rd</span>
-<span id="cb1-36"><a href="#cb1-36" tabindex="-1"></a>│   ├── export_outputs.Rd</span>
-<span id="cb1-37"><a href="#cb1-37" tabindex="-1"></a>│   ├── filter_low_exp_genes.Rd</span>
-<span id="cb1-38"><a href="#cb1-38" tabindex="-1"></a>│   ├── gene_regulation_summary.Rd</span>
-<span id="cb1-39"><a href="#cb1-39" tabindex="-1"></a>│   ├── generate_volcano.Rd</span>
-<span id="cb1-40"><a href="#cb1-40" tabindex="-1"></a>│   ├── log2_shrinkage.Rd</span>
-<span id="cb1-41"><a href="#cb1-41" tabindex="-1"></a>│   └── run_DESeq2.Rd</span>
-<span id="cb1-42"><a href="#cb1-42" tabindex="-1"></a>├── tests</span>
-<span id="cb1-43"><a href="#cb1-43" tabindex="-1"></a>│   ├── testthat</span>
-<span id="cb1-44"><a href="#cb1-44" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>DESeq2_analysis.R</span>
-<span id="cb1-45"><a href="#cb1-45" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>determine_filter_threshold.R</span>
-<span id="cb1-46"><a href="#cb1-46" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>export.R</span>
-<span id="cb1-47"><a href="#cb1-47" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>filter_low_exp_genes.R</span>
-<span id="cb1-48"><a href="#cb1-48" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>shrinkage.R</span>
-<span id="cb1-49"><a href="#cb1-49" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>summarize_genes.R</span>
-<span id="cb1-50"><a href="#cb1-50" tabindex="-1"></a>│   │   └── test<span class="sc">-</span>volcano_plot.R</span>
-<span id="cb1-51"><a href="#cb1-51" tabindex="-1"></a>│   └── testthat.R</span>
-<span id="cb1-52"><a href="#cb1-52" tabindex="-1"></a>└── vignettes</span>
-<span id="cb1-53"><a href="#cb1-53" tabindex="-1"></a>    ├── about.Rmd</span>
-<span id="cb1-54"><a href="#cb1-54" tabindex="-1"></a>    ├── cli<span class="sc">-</span>analysis.Rmd</span>
-<span id="cb1-55"><a href="#cb1-55" tabindex="-1"></a>    ├── cli<span class="sc">-</span>analysis.html</span>
-<span id="cb1-56"><a href="#cb1-56" tabindex="-1"></a>    ├── getting<span class="sc">-</span>started.Rmd</span>
-<span id="cb1-57"><a href="#cb1-57" tabindex="-1"></a>    ├── prebuilt_data.RData</span>
-<span id="cb1-58"><a href="#cb1-58" tabindex="-1"></a>    ├── r<span class="sc">-</span>analysis.Rmd</span>
-<span id="cb1-59"><a href="#cb1-59" tabindex="-1"></a>    ├── r<span class="sc">-</span>analysis.html</span>
-<span id="cb1-60"><a href="#cb1-60" tabindex="-1"></a>    └── workflow.png</span></code></pre></div>
+<span id="cb1-23"><a href="#cb1-23" tabindex="-1"></a>├── exec</span>
+<span id="cb1-24"><a href="#cb1-24" tabindex="-1"></a>│   └── ADS8192.R</span>
+<span id="cb1-25"><a href="#cb1-25" tabindex="-1"></a>├── man</span>
+<span id="cb1-26"><a href="#cb1-26" tabindex="-1"></a>│   ├── ExpreSEd<span class="sc">-</span>package.Rd</span>
+<span id="cb1-27"><a href="#cb1-27" tabindex="-1"></a>│   ├── determine_filter_threshold.Rd</span>
+<span id="cb1-28"><a href="#cb1-28" tabindex="-1"></a>│   ├── example_se.Rd</span>
+<span id="cb1-29"><a href="#cb1-29" tabindex="-1"></a>│   ├── export_outputs.Rd</span>
+<span id="cb1-30"><a href="#cb1-30" tabindex="-1"></a>│   ├── filter_low_exp_genes.Rd</span>
+<span id="cb1-31"><a href="#cb1-31" tabindex="-1"></a>│   ├── gene_regulation_summary.Rd</span>
+<span id="cb1-32"><a href="#cb1-32" tabindex="-1"></a>│   ├── generate_volcano.Rd</span>
+<span id="cb1-33"><a href="#cb1-33" tabindex="-1"></a>│   ├── log2_shrinkage.Rd</span>
+<span id="cb1-34"><a href="#cb1-34" tabindex="-1"></a>│   └── run_DESeq2.Rd</span>
+<span id="cb1-35"><a href="#cb1-35" tabindex="-1"></a>├── tests</span>
+<span id="cb1-36"><a href="#cb1-36" tabindex="-1"></a>│   ├── testthat</span>
+<span id="cb1-37"><a href="#cb1-37" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>DESeq2_analysis.R</span>
+<span id="cb1-38"><a href="#cb1-38" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>determine_filter_threshold.R</span>
+<span id="cb1-39"><a href="#cb1-39" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>export.R</span>
+<span id="cb1-40"><a href="#cb1-40" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>filter_low_exp_genes.R</span>
+<span id="cb1-41"><a href="#cb1-41" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>shrinkage.R</span>
+<span id="cb1-42"><a href="#cb1-42" tabindex="-1"></a>│   │   ├── test<span class="sc">-</span>summarize_genes.R</span>
+<span id="cb1-43"><a href="#cb1-43" tabindex="-1"></a>│   │   └── test<span class="sc">-</span>volcano_plot.R</span>
+<span id="cb1-44"><a href="#cb1-44" tabindex="-1"></a>│   └── testthat.R</span>
+<span id="cb1-45"><a href="#cb1-45" tabindex="-1"></a>└── vignettes</span>
+<span id="cb1-46"><a href="#cb1-46" tabindex="-1"></a>    ├── about.Rmd</span>
+<span id="cb1-47"><a href="#cb1-47" tabindex="-1"></a>    ├── cli<span class="sc">-</span>analysis.Rmd</span>
+<span id="cb1-48"><a href="#cb1-48" tabindex="-1"></a>    ├── cli<span class="sc">-</span>analysis.html</span>
+<span id="cb1-49"><a href="#cb1-49" tabindex="-1"></a>    ├── getting<span class="sc">-</span>started.Rmd</span>
+<span id="cb1-50"><a href="#cb1-50" tabindex="-1"></a>    ├── prebuilt_data.RData</span>
+<span id="cb1-51"><a href="#cb1-51" tabindex="-1"></a>    ├── r<span class="sc">-</span>analysis.Rmd</span>
+<span id="cb1-52"><a href="#cb1-52" tabindex="-1"></a>    ├── r<span class="sc">-</span>analysis.html</span>
+<span id="cb1-53"><a href="#cb1-53" tabindex="-1"></a>    └── workflow.png</span></code></pre></div>
 <hr>
 </div>
 <div class="section level2">

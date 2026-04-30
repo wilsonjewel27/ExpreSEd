@@ -127,9 +127,9 @@ example_se_exports <- export_outputs(
   output_dir = file.path(tempdir(), "de_output")
 )
 #> Export complete. Files saved:
-#> /tmp/RtmprDijXD/de_output/de_results.tsv
-#> /tmp/RtmprDijXD/de_output/de_summary.tsv
-#> /tmp/RtmprDijXD/de_output/filtering_diagnostics.tsv
-#> /tmp/RtmprDijXD/de_output/volcano_plot.pdf
-#> /tmp/RtmprDijXD/de_output/volcano_plot.png
+#> /tmp/RtmpNLeqWr/de_output/de_results.tsv
+#> /tmp/RtmpNLeqWr/de_output/de_summary.tsv
+#> /tmp/RtmpNLeqWr/de_output/filtering_diagnostics.tsv
+#> /tmp/RtmpNLeqWr/de_output/volcano_plot.pdf
+#> /tmp/RtmpNLeqWr/de_output/volcano_plot.png
 ```
