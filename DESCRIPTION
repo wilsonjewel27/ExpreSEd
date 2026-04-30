@@ -1,5 +1,5 @@
 Package: ExpreSEd
-Title: ADS 8192 Differential Expression with DESeq2
+Title: ExpreSEd
 Version: 0.0.0.9000
 Authors@R: 
     person("Wilson", "Jewel", email = "jewel.wilson@stjude.org", role = c("aut", "cre"),
@@ -24,7 +24,6 @@ Imports:
     DESeq2,
     apeglm,
     stats,
-    rlang,
     utils
 Suggests: 
     knitr,
