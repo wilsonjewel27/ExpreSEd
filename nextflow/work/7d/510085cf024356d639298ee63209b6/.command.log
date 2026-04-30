@@ -1,4 +1,0 @@
-Filtering low expression genes...
-Genes after filtering: 500 
-colData names: cell_id cell_type batchSaved as RDS
-Done.
