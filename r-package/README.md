@@ -25,6 +25,28 @@ knitr::opts_chunk$set(
 
 Designed for RNA-seq workflows, **JW26ADS8192** provides a streamlined pipeline to differential expression results. Use a SummarizedExperiment object through the R package interface, or supply raw count matrices and sample metadata (TSV/CSV) directly via the command-line interface.
 
+--- 
+## Reproducibility / How to Run
+
+This project has:
+- **Conda env file** at `r-package/environment.yml`
+- **Dockerfile** at `r-package/Dockerfile`
+- **Nextflow pipeline** at `nextflow/main.nf`
+
+From repo root (`JW26ADS8192.v0.0.2`):
+```bash
+# Step 1. Create Conda environment
+conda env create -f environment.yml
+conda activate ads8192
+
+# Step 2. Build and Run a Docker Image
+docker build -t hw2-jewel:0.0.3 ./r-package
+docker run --rm -it -v "$PWD":/ads8192 -w /ads8192 hw2-jewel:0.0.3
+
+# Step 3. Run Nextflow workflow
+nextflow run nextflow/main.nf -c nextflow/nextflow.config -profile docker --outdir nextflow/results
+
+```
 ---
 
 ## R Studio Analysis
@@ -126,31 +148,6 @@ JW26ADS8192 gene_regulation_summary  --input ./results/dge_shrink.rds --output .
 JW26ADS8192 generate_volcano --input ./results/dge_shrink.rds --output ./results/
 
 ```
---- 
-## Reproducibility / How to Run
-
-This project has:
-- **Conda env file** at `r-package/environment.yml`
-- **Dockerfile** at `r-package/Dockerfile`
-- **Nextflow pipeline** at `nextflow/main.nf`
-
-From repo root (`JW26ADS8192.v0.0.2`):
-```bash
-# Step 1. Create Conda environment
-conda env create -f environment.yml
-conda activate ads8192
-
-# Step 2. Build and Run a Docker Image
-docker build -t hw2-jewel:0.0.3 ./r-package
-docker run --rm -it -v "$PWD":/ads8192 -w /ads8192 hw2-jewel:0.0.3
-
-# Step 3. Run Nextflow workflow
-nextflow run nextflow/main.nf -c nextflow/nextflow.config -profile docker --outdir nextflow/results
-
-```
-
-
-
 ---
 ## Notes
 JW26ADS8192 **R-package** includes an additional function (7 total functions) which collectively generates and exports filtering_analysis.tsv, dge_shrink.tsv, volcano_plot.pdf, and volcano_plot.png to current working directory. JW26ADS8192 **CLI** only includes 6 functions, which generate and export deliverable within a single step
