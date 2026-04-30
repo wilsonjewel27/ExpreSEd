@@ -14,6 +14,7 @@ sample metadata (TSV/CSV) directly via the command-line interface.
 ### Installation
 
 ``` r
+
 # Install the package from GitHub
 remotes::install_github("ExpreSEd")
 ```
@@ -21,6 +22,7 @@ remotes::install_github("ExpreSEd")
 ### Quick Start
 
 ``` r
+
 # Load package and example data (SummarizedExperiment)
 library(ExpreSEd)
 data(example_se)

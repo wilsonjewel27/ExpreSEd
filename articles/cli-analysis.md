@@ -16,6 +16,7 @@ Rscript -e "Rapp::install_pkg_cli_apps('ExpreSEd')"
 ## Step 2: Load example dataset and set paths
 
 ``` r
+
 ex_counts_path <- system.file("testdata", "example_counts.tsv", package = "ExpreSEd")
 ex_meta_path   <- system.file("testdata", "example_meta.tsv", package = "ExpreSEd")
 

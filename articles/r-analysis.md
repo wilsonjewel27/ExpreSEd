@@ -9,6 +9,7 @@ object through the R package interface
 ## Step 1: Install ExpreSEd from GitHub
 
 ``` r
+
 remotes::install_github("wilsonjewel27/ExpreSEd")
 ```
 
@@ -17,6 +18,7 @@ remotes::install_github("wilsonjewel27/ExpreSEd")
 ## Step 2: Load the following libraries & example dataset
 
 ``` r
+
 #Required Libraries
 library(ExpreSEd)
 library(ggplot2)
@@ -46,6 +48,7 @@ cell type to be reference. Default `re_level` = “Tconv”. Replace
 “counts”.
 
 ``` r
+
 example_se_filtering_assessment <- determine_filter_threshold(
   se_ln             = example_se,
   count_thresholds  = c(0, 1, 5, 10, 20, 50, 100, 200, 500),
@@ -66,6 +69,7 @@ Step 1. Default `min_count_per_gene` = 10. Replace `assay_name` with the
 appropriate label. Default \`assay_name = “counts”.
 
 ``` r
+
 se_filtered <- filter_low_exp_genes(
   se_ln               = example_se,
   min_count_per_group = 10,
@@ -81,6 +85,7 @@ Default `group_var` = “cell-type”. Replace `ref_level` with a specific
 cell type to be reference. Default `re_level` = “Tconv”
 
 ``` r
+
 se_dge <- run_DESeq2(
   se_ln     = se_filtered, 
   group_var = "cell_type", 
@@ -94,6 +99,7 @@ Replace `shrinkage` with the appropriate GLM estimator. Default
 `shrinkage` = “apeglm”.
 
 ``` r
+
 se_dge_shrink <- log2_shrinkage(
   dds       = se_dge, 
   shrinkage = "apeglm"
@@ -110,6 +116,7 @@ threshold. Default `p_threshold` = 0.05. Replace `fc_threshold` with the
 appropriate fold-change threshold. Default `fc_threshold` = 0.5.
 
 ``` r
+
 DESeq2_gene_reg_summary <- gene_regulation_summary(
   res_df       = se_dge_shrink,
   p_threshold  = 0.05,
@@ -129,6 +136,7 @@ correct x-axis title. Default `xlab` = “log2 Fold Change (Treg vs
 Tconv)”.
 
 ``` r
+
 example_se_volcano <- generate_volcano(
   res_df       = se_dge_shrink,
   fc_threshold = 0.5,
@@ -148,6 +156,7 @@ plots as a PDF and PNG images. Outputs will export as “de_output” to
 current working directory unless explicitly indicated.
 
 ``` r
+
 example_se_exports <- export_outputs(
   res_df         = se_dge_shrink,
   summary_df     = DESeq2_gene_reg_summary,
