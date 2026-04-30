@@ -1,6 +1,6 @@
 # R/data.R
 
-#' Evaluates how pre-filtering thresholds affect the number of 
+#' Evaluates how pre-filtering thresholds affect the number of
 #' discoveries, helping users select an informed minimum count.
 #'
 #' @param se_ln A SummarizedExperiment object
@@ -15,7 +15,7 @@
 #'
 #' @importFrom  SummarizedExperiment assay colData
 #' @importFrom  DESeq2 DESeqDataSet DESeq results
-#' @importFrom  stats relevel na.rm as.formula
+#' @importFrom  stats relevel as.formula
 #' @export
 #'
 #' @examples
@@ -34,7 +34,7 @@
 #' # Step 2: Choose the optimal min count threshold.
 #'   # Insert into min_count_per_group (default: 10)
 #'
-determine_filter_threshold <- function(se_ln, 
+determine_filter_threshold <- function(se_ln,
                                        count_thresholds = c(0, 1, 5, 10, 20, 50, 100, 200, 500),
                                        assay_name = "counts", ref_level = "Tconv",
                                        group_var = "cell_type", p_threshold = 0.05){

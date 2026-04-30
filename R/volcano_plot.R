@@ -1,3 +1,6 @@
+# Tells R CMD check that these are column names of a data frame
+utils::globalVariables(c("log2FoldChange", "neg_log10p", "direction"))
+
 # R/data.R
 
 #' Visualize results as a volcano plot
@@ -7,14 +10,11 @@
 #' @param xlab The label of the x-axis
 #' @param set_title The title of the plot
 #' @param p_threshold The threshold that defines a gene's significance (default: 0.05)
-
-#'
 #' @return volcano pot with significant genes highlighted
 #'
 #' @importFrom SummarizedExperiment assay colData
 #' @importFrom ggplot2 ggplot geom_point scale_color_manual theme_bw labs geom_vline geom_hline aes
 #' @importFrom apeglm apeglm
-#' @importFrom utils log2FoldChange neg_log10p direction
 #' @export
 #'
 #' @examples
@@ -38,10 +38,10 @@
 #'   p_threshold = 0.05
 #' )
 #'
-generate_volcano <- function(res_df, 
-                             fc_threshold = 0.5, 
+generate_volcano <- function(res_df,
+                             fc_threshold = 0.5,
                              xlab = "log2 Fold Change (Treg vs Tconv)",
-                             set_title = "Volcano Plot - Lymph Node Treg vs Tconv", 
+                             set_title = "Volcano Plot - Lymph Node Treg vs Tconv",
                              p_threshold = 0.05) {
 #re-create gene regulation summary df (with gene names)
   if (!all(c("padj", "log2FoldChange") %in% colnames(res_df))){
@@ -49,15 +49,15 @@ generate_volcano <- function(res_df,
   }
   else {
   res_df$direction <- "ns"
-res_df$direction[res_df$padj < p_threshold & 
+res_df$direction[res_df$padj < p_threshold &
                      res_df$log2FoldChange > fc_threshold] <- "up"
-  res_df$direction[res_df$padj < p_threshold & 
+  res_df$direction[res_df$padj < p_threshold &
                      res_df$log2FoldChange < -fc_threshold] <- "down"
 # ensures graphed values are numeric
   res_df$neg_log10p <- as.numeric(-log10(res_df$pvalue))
   res_df$log2FoldChange <- as.numeric(res_df$log2FoldChange)
 #build the plot
-  v_plot <- ggplot(res_df, 
+  v_plot <- ggplot(res_df,
   aes(x = log2FoldChange, y = neg_log10p, color = direction)) +
     geom_point(size = 0.8, alpha = 0.6) +
     scale_color_manual(values = c(down = "blue", ns = "grey70", up = "red")) +

@@ -12,7 +12,6 @@
 #'
 #' @importFrom ggplot2 ggsave
 #' @importFrom SummarizedExperiment assay colData
-#' @importFrom stats write.table
 #' @export
 #'
 #' @examples
@@ -75,8 +74,8 @@ export_outputs<- function(res_df, summary_df, filtering_diag, volcano,
 #Saves the volcano plot as a pdf
     ggsave(filename="volcano_plot.pdf", plot=volcano, width=5, height = 5, path = output_dir)
 #Saves the volcano plot as a png
-    ggsave(filename = "volcano_plot.png", plot = volcano, 
-    width = 5, height = 5, units = "in", 
+    ggsave(filename = "volcano_plot.png", plot = volcano,
+    width = 5, height = 5, units = "in",
     dpi = 300, path = output_dir)
     files <- list.files(output_dir, full.names = TRUE)
     message(sprintf( "Export complete. Files saved:\n%s",
