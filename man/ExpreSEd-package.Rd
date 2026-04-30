@@ -4,7 +4,7 @@
 \name{ExpreSEd-package}
 \alias{ExpreSEd}
 \alias{ExpreSEd-package}
-\title{ExpreSEd: ADS 8192 Differential Expression with DESeq2}
+\title{ExpreSEd: ExpreSEd}
 \description{
 Provides a tool for differential gene analysis of lymph node regulatory T cells (Tregs) and conventional T cells (Tconv) isolated from four mouse tissues (fat, liver, lymph node, and skin). Tool includes functions that (1) filtering low expression gene counts, (2) preforms DESeq2 differential expression analysis, (3) applies log2fold-change shrinkage to the DESeq2 results, (4) summarizes the number of up/down/non-significant genes at given thresholds, (5) computes indepdenpt filtering diagonsitics, (6) visualizes results as a volcano plot, and (7) exportsthe results to TSV files.
 }
@@ -12,6 +12,7 @@ Provides a tool for differential gene analysis of lymph node regulatory T cells 
 Useful links:
 \itemize{
   \item \url{https://github.com/wilsonjewel27/ExpreSEd}
+  \item \url{https://wilsonjewel27.github.io/ExpreSEd/}
   \item Report bugs at \url{https://github.com/wilsonjewel27/ExpreSEd/issues}
 }
 

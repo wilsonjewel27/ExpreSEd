@@ -2,7 +2,8 @@
 % Please edit documentation in R/summarize_genes.R
 \name{gene_regulation_summary}
 \alias{gene_regulation_summary}
-\title{Summarize the number of significantly non-significant(ns)/up/down genes at given thresholds}
+\title{Summarize the number of significant, upregulated, and
+downregulated genes at given thresholds}
 \usage{
 gene_regulation_summary(res_df, p_threshold = 0.05, fc_threshold = 0.5)
 }
@@ -17,21 +18,26 @@ gene_regulation_summary(res_df, p_threshold = 0.05, fc_threshold = 0.5)
 Summary of non-significant(ns)/up/down genes
 }
 \description{
-Summarize the number of significantly non-significant(ns)/up/down genes at given thresholds
+Summarize the number of significant, upregulated, and
+downregulated genes at given thresholds
 }
 \examples{
 data(example_se)
 
-# Step 1; Filter low expression genes
+# Step 1: Filter low expression genes
 se_filtered<- filter_low_exp_genes(example_se, min_count_per_group = 10)
 
 # Step 2: Run the DESeq2 pipeline to get differential gene expression results
  se_dge<- run_DESeq2(se_filtered)
 
-# Step 3: Run the log2_shrinkage function on the results of the DESeq2 function to create more reliable estimates
+# Step 3: Run the DESeq2 pipeline to get differential gene expression results
 se_dge_shrink <- log2_shrinkage(se_dge)
 
 #Step 4: Generate the regulation summary of the genes
-DESeq2_gene_reg_summary<- gene_regulation_summary(res_df = se_dge_shrink, p_threshold = 0.05, fc_threshold =  0.5)
+DESeq2_gene_reg_summary <- gene_regulation_summary(
+  res_df = se_dge_shrink,
+  p_threshold = 0.05,
+  fc_threshold = 0.5
+)
 
 }

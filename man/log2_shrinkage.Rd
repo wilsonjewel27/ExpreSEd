@@ -20,13 +20,13 @@ Apply log2fold-change shrinkage for more reliable effect-size estimates
 \examples{
 data(example_se)
 
-# Step 1; Filter low expression genes
+# Step 1:L Filter low expression genes
 se_filtered<- filter_low_exp_genes(example_se, min_count_per_group = 10)
 
 # Step 2: Run the DESeq2 pipeline to get differential gene expression results
  se_dge<- run_DESeq2(se_filtered)
 
-# Step 3: Run the log2_shrinkage function on the results of the DESeq2 function to create more reliable estimates
+# Step 3: Run log2_shrinkage on DESeq2 results for reliable estimates
 se_dge_shrink <- log2_shrinkage(dds = se_dge, shrinkage = "apeglm")
 
 }

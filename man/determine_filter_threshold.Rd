@@ -2,7 +2,8 @@
 % Please edit documentation in R/determine_filter_threshold.R
 \name{determine_filter_threshold}
 \alias{determine_filter_threshold}
-\title{The filtering diagnostics evaluate how the pre-filtering threshold (minimum count per group) affects the number of discoveries, enabling users to choose an informed threshold}
+\title{Evaluates how pre-filtering thresholds affect the number of
+discoveries, helping users select an informed minimum count.}
 \usage{
 determine_filter_threshold(
   se_ln,
@@ -16,7 +17,8 @@ determine_filter_threshold(
 \arguments{
 \item{se_ln}{A SummarizedExperiment object}
 
-\item{count_thresholds}{minimum threshold of gene counts (default: 'c(0, 1, 5, 10, 20, 50, 100, 200, 500)')}
+\item{count_thresholds}{Numeric vector of thresholds to evaluate
+(default: c(0, 1, 5, 10, 20, 50, 100, 200, 500))}
 
 \item{assay_name}{Name of assay to use (default: "counts")}
 
@@ -30,14 +32,23 @@ determine_filter_threshold(
 A dataframe summarizing the number of significant genes per threshold
 }
 \description{
-The filtering diagnostics evaluate how the pre-filtering threshold (minimum count per group) affects the number of discoveries, enabling users to choose an informed threshold
+Evaluates how pre-filtering thresholds affect the number of
+discoveries, helping users select an informed minimum count.
 }
 \examples{
 data(example_se)
 
 # Step 1: Evaluate how model preforms using different threshold values
-example_se_filtering_assessment<- determine_filter_threshold(se_ln = example_se,count_thresholds = c(0, 1, 5, 10, 20, 50, 100, 200, 500), assay_name = "counts", ref_level = "Tconv", group_var = "cell_type", p_threshold = 0.05)
+example_se_filtering_assessment <- determine_filter_threshold(
+  se_ln = example_se,
+  count_thresholds = c(0, 1, 5, 10, 20, 50, 100, 200, 500),
+  assay_name = "counts",
+  ref_level = "Tconv",
+  group_var = "cell_type",
+  p_threshold = 0.05
+)
 
-# Step 2: Choose the optimal min gene count threshold per gene and insert into all functions. `min_count_per_group` (default: 10)
+# Step 2: Choose the optimal min count threshold.
+  # Insert into min_count_per_group (default: 10)
 
 }
