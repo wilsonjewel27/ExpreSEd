@@ -8,3 +8,5 @@
 ^pkgdown$
 ^\.github$
 ^example_outputs$
+^doc$
+^Meta$

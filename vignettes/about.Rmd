@@ -13,9 +13,8 @@ knitr::opts_chunk$set(eval = FALSE, message = FALSE, warning = FALSE)
 ExpreSEd is a package that provides a streamlined pipeline for differential expression analysis using SummarizedExperiment objects, and raw counts data and sample metadata files. Input bulk RNA-seq data, and ExpreSEd will output an optimal filter threshold matrix, log2-fold change shrunken differential analysis results, a summary of expression patterns, and a volcano plot.  ExpreSEd is compatible with R, command line, Docker, and Nextflow programs.
 
 ## Workflow
-```{r, echo=FALSE, fig.cap="Your caption", out.width="80%", fig.align="center"}
-knitr::include_graphics("workflow.png")
-```
+<img src="workflow.png" width="80%" />
+
 
 ## Package Components
 ```r
@@ -41,13 +40,6 @@ knitr::include_graphics("workflow.png")
 │   └── example_se.rda
 ├── data-raw
 │   └── example_se.R
-├── inst
-│   └── example_outputs
-│       ├── de_results.tsv
-│       ├── de_summary.tsv
-│       ├── filtering_diagnostics.tsv
-│       ├── volcano_plot.pdf
-│       └── volcano_plot.png
 ├── exec
 │   └── ADS8192.R
 ├── man
