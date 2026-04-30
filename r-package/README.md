@@ -16,6 +16,29 @@ sample metadata (TSV/CSV) directly via the command-line interface.
 
 ------------------------------------------------------------------------
 
+## Reproducibility / How to Run
+
+This project has: - **Conda env file** at `r-package/environment.yml` -
+**Dockerfile** at `r-package/Dockerfile` - **Nextflow pipeline** at
+`nextflow/main.nf`
+
+From repo root (`JW26ADS8192.v0.0.2`):
+
+``` bash
+# Step 1. Create Conda environment
+conda env create -f environment.yml
+conda activate ads8192
+
+# Step 2. Build and Run a Docker Image
+docker build -t hw2-jewel:0.0.3 ./r-package
+docker run --rm -it -v "$PWD":/ads8192 -w /ads8192 hw2-jewel:0.0.3
+
+# Step 3. Run Nextflow workflow
+nextflow run nextflow/main.nf -c nextflow/nextflow.config -profile docker --outdir nextflow/results
+```
+
+------------------------------------------------------------------------
+
 ## R Studio Analysis
 
 ### Installation
@@ -77,7 +100,7 @@ example_se_exports<- export_outputs(
   summary_df     = DESeq2_gene_reg_summary, 
   filtering_diag = example_se_filtering_assessment, 
   volcano        = example_se_volcano, 
-  output_dir     = file.path("(tempdir()", "de_output") )
+  output_dir     = file.path((tempdir(), "de_output") )
 ```
 
 ------------------------------------------------------------------------
