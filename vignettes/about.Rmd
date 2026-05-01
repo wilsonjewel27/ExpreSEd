@@ -78,8 +78,9 @@ ExpreSEd is a package that provides a streamlined pipeline for differential expr
 
 ### Key Aspects/ Takeaways
 
-- Specify GitHub commits
-- Writing functions, creating a package, and operating containers
+- Modular Software Design
+- Reproduciblity
+- Collaborative Development Practices
 
 ### Future Work
 
