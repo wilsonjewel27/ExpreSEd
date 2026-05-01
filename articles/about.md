@@ -78,8 +78,9 @@ line, Docker, and Nextflow programs.
 
 ### Key Aspects/ Takeaways
 
-- Specify GitHub commits
-- Writing functions, creating a package, and operating containers
+- Modular Software Design
+- Reproduciblity
+- Collaborative Development Practices
 
 ### Future Work
 
